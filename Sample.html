@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>PubNub Dashboard</title>
+		<style type="text/css">
+		body {
+			width: 500px;
+			margin: 20px auto;
+		}
+		</style>
+
+		<script type="text/javascript" src="http://pubnub.github.io/eon/v/eon/0.0.9/eon.js">
+		</script>
+		<link type="text/css" rel="stylesheet" href="http://pubnub.github.io/eon/v/eon/0.0.9/eon.css">
+		</link>
+	</head>
+
+	<body>
+		<h1>Realtime Data Visualisation </h1>
+		<div id = "body-spline"></div>
+		<script>
+			var pubnub = PUBNUB.init({
+			publish_key: 'pub-c-55d4e23d-87db-483b-8aa8-c54adc73d825',
+			subscribe_key: 'sub-c-aab766da-bde9-11e5-a316-0619f8945a4f'
+			});
+		eon.chart({
+			channel: 'SensorDatav2.1',
+			pubnub: pubnub,
+			limit: 10,
+			history: true,
+			flow: true,
+			generate: {
+			bindto: '#body-spline'
+			}
+		});
+		</script>
+		
+	</body>
+</html>
